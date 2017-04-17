@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="Access-Control-Allow-Origin" content="*">
+        <title>test</title>
+	
+	</head>
+    <body>  
+        <i ng-animate-swap="number" class="swap-animation" ng-class="colorClass(number)"></i>
+    </body>
+
+		<script  src="lib/angular-animate.min.js?v=1e556a55bf" ></script>	
+</html>
+<script type="text/javescript">
+angular.module('yun.homework').controller('logincontroller', function($scope,$hprose,$location,$state,$cookies,$interval) {
+	
+	$scope.number=0;	 
+	var navchange=$interval(function() {
+		$scope.number++;
+	},5000);
+	
+    var banner = ['banner1','banner2','banner3'];	
+	$scope.colorClass = function(number) {
+
+		return banner[number % banner.length];
+	};
+	
+	//鼠标滚轮事件
+	var isFirefox = navigator.userAgent.indexOf("Firefox") != -1;
+	//Firefox事件：DOMMouseScroll、IE/Opera/Chrome事件：mousewheel
+	var mousewheel = isFirefox ? "DOMMouseScroll" : "mousewheel";
+	 
+	//鼠标滚动事件
+	var scrollFunc = function(e) {
+		//e = e || window.event;
+		//当鼠标在子系统区域内时：屏蔽窗口滚轮-滚动滚动条事件；
+		//此时才调用子系统滚动方法
+	
+		e = e || window.event;
+		if (e.stopPropagation) e.stopPropagation();
+		else e.cancelBubble = true;
+		if (e.preventDefault) e.preventDefault();
+		else e.returnValue = false;
+		 
+		 
+		if(isFirefox){
+			if (e.detail == -3) {
+				// 向上滚动
+				$scope.number++;$scope.number++;
+			} else {
+				// 向下滚动
+				$scope.number++;
+			}
+		}else{
+			if (e.wheelDelta == 120) {
+				// 向上滚动
+				$scope.number++;$scope.number++;
+			} else {
+				// 向上滚动
+				$scope.number++;				
+				//$scope.colorClass($scope.number);
+			}
+		}
+		$scope.$apply();
+	};
+	 
+	try{
+	    document.addEventListener(mousewheel, scrollFunc, false);
+	}catch(err){
+	    window.onmousewheel=document.onmousewheel=scrollFunc;
+	}        
+	
+
+	// stops the interval when the scope is destroyed,
+    // this usually happens when a route is changed and 
+    // the ItemsController $scope gets destroyed. The
+    // destruction of the ItemsController scope does not
+    // guarantee the stopping of any intervals, you must
+    // be responsible for stopping it when the scope is
+    // is destroyed
+	$scope.$on('$destroy', function() {
+		//销毁定时器
+		$interval.cancel(navchange);
+		navchange=undefined;
+		//取消监听滚动事件
+		document.removeEventListener(mousewheel, scrollFunc, false);
+    });
+});
+</script>

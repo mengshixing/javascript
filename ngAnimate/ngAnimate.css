@@ -1,0 +1,16 @@
+
+
+.swap-animation.ng-enter, .swap-animation.ng-leave {
+  transition:0.5s linear all;
+}
+.swap-animation.ng-enter {
+  top:100%;
+}
+.swap-animation.ng-enter-active {
+  top:0px;
+}
+.swap-animation.ng-leave {
+  top:0px;
+}
+.swap-animation.ng-leave-active {
+  top:-100%;
