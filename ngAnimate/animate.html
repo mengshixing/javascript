@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="app">
     <head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="Access-Control-Allow-Origin" content="*">
-        <title>test</title>	
-	</head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Access-Control-Allow-Origin" content="*">
+        <title>test</title>    
+    </head>
     <body ng-controller="testcontroller>  
         <i ng-animate-swap="number" class="swap-animation" ng-class="colorClass(number)"></i>
     </body>
-	<script  src="lib/angular-animate.min.js?v=1e556a55bf" ></script>	
+    <script  src="lib/angular-animate.min.js?v=1e556a55bf" ></script>    
 </html>
 <script type="text/javescript">
-	
-	angular.module('yun.homework').controller('testcontroller', function($scope,$interval) {
-		
-	    $scope.number=0;     
+    
+    angular.module('yun.homework').controller('testcontroller', function($scope,$interval) {
+        
+        $scope.number=0;     
         //创建定时器
         var navchange=$interval(function() {
             $scope.number++;
