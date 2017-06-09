@@ -6,4 +6,4 @@ some   ex.
 
 2    Asynchronous Javascript and XML,(ajax)的原理
 
-3    select2:一个jquery插件,提供下拉框搜索功能
+3    select2:一个jquery插件,提供下拉框搜索功能
