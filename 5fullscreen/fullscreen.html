@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<script src="jquery-1.8.2.min.js"></script>
+</head>
+<body>
+
+    <div id="containercontainer" style="background: #000;width:800px;height:400px;">
+		<video src="http://www.runoob.com/try/demo_source/movie.mp4" autoplay loop></video>
+		<button id="fullScreen">全屏</button>
+ 	</div>
+
+</body>
+
+<script>
+    window.esc_flag=true;
+    //全屏
+    $("#fullScreen").click(function(){
+        var element=$('#fullScreen')[0];
+        
+        //如果未定义 或者不是全屏后则置为全屏
+        if((window._FullScreen==undefined)||(window._FullScreen==false)){
+            window._FullScreen=true;
+            //全屏
+            if(element.requestFullScreen){
+                element.requestFullScreen();
+            }else if(element.mozRequestFullScreen) { //兼容moz
+                element.mozRequestFullScreen();
+            }else if(element.webkitRequestFullScreen) { //兼容webkit
+                element.webkitRequestFullScreen();
+            }
+        }
+        //取消全屏
+        else{
+            window._FullScreen=false;
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+            else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            }
+            else if (document.webkitCancelFullScreen) {
+                document.webkitCancelFullScreen();
+            }
+            else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }               
+        }   
+    });
+    //退出全屏  
+    document.addEventListener("fullscreenchange", function(e) {         
+        esx_FullScreen();
+    });
+    document.addEventListener("mozfullscreenchange", function(e) {
+        esx_FullScreen();
+    });
+    document.addEventListener("webkitfullscreenchange", function(e) {
+        esx_FullScreen();
+    });
+    document.addEventListener("msfullscreenchange", function(e) {
+        esx_FullScreen();
+    });
+    //浏览器不允许监听ESC键的，跟网页加载完成之后不能用程序使浏览器全屏一样的道理，避免开发者恶意全屏
+    //$("#container")[0].onresize = function(){
+    function esx_FullScreen(){      
+        console.log(window.esc_flag);
+        //重新生成CSS               
+        if(window.esc_flag){
+            //全屏
+            $("#container").css('width',window.screen.availWidth);
+            $("#container").css('height',window.screen.availHeight);
+            video_css(window.screen.availWidth,window.screen.availHeight,lms.opt.video_arr,"#container");   
+            window.esc_flag=false;
+        }else{
+            //退出全屏
+            $("#container").css('width',"#container".firstwidth);
+            $("#container").css('height',"#container".firstheight);
+            video_css("#container".firstwidth,"#container".firstheight,lms.opt.video_arr,"#container");
+            window.esc_flag=true;
+            window._FullScreen=false;
+        }       
+    };
+</script>
+
+
+</html>
