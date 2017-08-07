@@ -1,0 +1,41 @@
+<!--
+    本文记录 使用bootstrap的modal模态框预览视频,关闭之后视频声音继续10几秒才停止的问题
+    将隐藏事件触发的代码modal.find('.iframeedit').attr('src','');
+    改为 modal.find('.iframeedit').attr('src','/');即可。
+    
+    ('src','')chrome浏览器会解析成url(uknown)
+    
+-->
+
+<div  style='cursor:pointer;' data-url="<?= $url?>" data-toggle='modal' data-target="#myModalpreview" >
+
+<div class="modal fade" id="myModalpreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="false">
+   <div class="modal-dialog" style="width:800px;">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close"  data-dismiss="modal" aria-hidden="true"> &times;  </button>
+            <h4 class="modal-title" id="myModalLabel">
+                视频预览
+            </h4>
+         </div>
+         <div class="modal-body">
+            <iframe class='iframeedit' style="width:750px;min-height:500px;border:none;" src=""></iframe>
+         </div>         
+      </div>
+  </div>
+</div>
+
+<script>
+
+//模态框显示与隐藏
+$('#myModalpreview').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget); 
+      var url = button.data('url');
+      modal.find('.iframeedit').attr('src','/videoplay.php?url='+url);
+    });
+$('#myModalpreview').on('hidden.bs.modal', function (event) {
+     var modal = $(this);
+     modal.find('.iframeedit').attr('src','/');
+});         
+
+</script>

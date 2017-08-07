@@ -13,3 +13,5 @@ some   ex.
 5    对一个dom(div,video等),全屏和取消全屏,兼容连点全屏btn(全屏,取消)和ESC,原创~~~
 
 6    jquery中on()与click()的区别 
+
+7    bootstrap隐藏hidden.bs.modal时iframe路径设置
