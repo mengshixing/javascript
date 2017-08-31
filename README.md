@@ -15,3 +15,5 @@ some   ex.
 6    jquery中on()与click()的区别 
 
 7    bootstrap隐藏hidden.bs.modal时iframe路径设置
+
+8    正则
