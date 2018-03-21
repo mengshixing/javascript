@@ -20,3 +20,7 @@
       // 所以DOMContentLoaded事件稍后将启动。  
   }   
 </script>  
+<sa>
+  aaa
+</sa>
+   
