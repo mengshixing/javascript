@@ -17,3 +17,7 @@ some   ex.
 7    bootstrap隐藏hidden.bs.modal时iframe路径设置
 
 8    正则
+
+9    dom加载
+
+10   js当前时间格式化
