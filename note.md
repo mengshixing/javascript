@@ -11,6 +11,7 @@
    $(document).on('focusout', function () {  
      //软键盘收起的事件处理  
    });  
-
+4  image元素的 object-fit: contain;适应到其使用的高度和宽度确定的框,等比例填满宽/高,其他留白
+   只考虑缩放的话max-width:100%;max-height:100%;也可以
 
 
