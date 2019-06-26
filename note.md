@@ -14,4 +14,6 @@
 4  image元素的 object-fit: contain;适应到其使用的高度和宽度确定的框,等比例填满宽/高,其他留白
    只考虑缩放的话max-width:100%;max-height:100%;也可以
 
+5  vue-cli项目编译npm run dev 报错Error: Cannot find module 'array-includes'
+    一般来说可能是项目目录名字改变了,吧node_modules删除重新npm install 即可
 
