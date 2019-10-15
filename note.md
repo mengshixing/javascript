@@ -16,4 +16,9 @@
 
 5  vue-cli项目编译npm run dev 报错Error: Cannot find module 'array-includes'
     一般来说可能是项目目录名字改变了,吧node_modules删除重新npm install 即可
+    
+6  Object.entries() 可以把一个对象的键值以数组的形式遍历出来，结果和 for...in 一致，但不会遍历原型属性。
+   const obj = { foo: 'bar', baz: 'abc' }; 
+   console.log(Object.entries(obj));  // [['foo', 'bar'], ['baz', 'abc']]
+   
 
